@@ -3,22 +3,18 @@ import React, { useState } from "react";
 function ToDoList() {
     const [tasks, setTasks] = useState(["Meeting at 2pm", "Learn React Fast"]);
     const [newTask, setNewTask] = useState("");
-
     function handleInputChange(event) {
         setNewTask(event.target.value);
     }
-
     function addTask() {
         if (newTask.trim() !== "") {
             setTasks(t => [...t, newTask]);
             setNewTask(""); 
         }
     }
-
     function deleteTask(index) {
-        setTasks(tasks.filter((_, i) => i !== index));
+        setTasks(tasks.filter((tasks, i) => i !== index));
     }
-
     function moveUp(index) {
         if (index > 0) {
             const newTasks = [...tasks];
@@ -26,7 +22,6 @@ function ToDoList() {
             setTasks(newTasks);
         }
     }
-
     function moveDown(index) {
         if (index < tasks.length - 1) {
             const newTasks = [...tasks];
@@ -34,7 +29,6 @@ function ToDoList() {
             setTasks(newTasks);
         }
     }
-
     return (
         <div>
             <h1>To Do List</h1>
@@ -58,5 +52,4 @@ function ToDoList() {
         </div>
     );
 }
-
 export default ToDoList;
